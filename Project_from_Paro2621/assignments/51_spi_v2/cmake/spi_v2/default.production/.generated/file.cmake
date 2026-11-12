@@ -1,0 +1,35 @@
+# The following variables contains the files used by the different stages of the build process.
+set(spi_v2_default_default_XC16_FILE_TYPE_assemble)
+set_source_files_properties(${spi_v2_default_default_XC16_FILE_TYPE_assemble} PROPERTIES LANGUAGE ASM)
+
+# For assembly files, add "." to the include path for each file so that .include with a relative path works
+foreach(source_file ${spi_v2_default_default_XC16_FILE_TYPE_assemble})
+        set_source_files_properties(${source_file} PROPERTIES INCLUDE_DIRECTORIES "$<PATH:NORMAL_PATH,$<PATH:REMOVE_FILENAME,${source_file}>>")
+endforeach()
+
+set(spi_v2_default_default_XC16_FILE_TYPE_assemblePreproc)
+set_source_files_properties(${spi_v2_default_default_XC16_FILE_TYPE_assemblePreproc} PROPERTIES LANGUAGE ASM)
+
+# For assembly files, add "." to the include path for each file so that .include with a relative path works
+foreach(source_file ${spi_v2_default_default_XC16_FILE_TYPE_assemblePreproc})
+        set_source_files_properties(${source_file} PROPERTIES INCLUDE_DIRECTORIES "$<PATH:NORMAL_PATH,$<PATH:REMOVE_FILENAME,${source_file}>>")
+endforeach()
+
+set(spi_v2_default_default_XC16_FILE_TYPE_compile
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../button.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../main.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../spi.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../timer.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../uart.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../utils.c")
+set_source_files_properties(${spi_v2_default_default_XC16_FILE_TYPE_compile} PROPERTIES LANGUAGE C)
+set(spi_v2_default_default_XC16_FILE_TYPE_link)
+set(spi_v2_default_default_XC16_FILE_TYPE_bin2hex)
+set(spi_v2_default_image_name "default-production.elf")
+set(spi_v2_default_image_base_name "default-production")
+
+# The output directory of the final image.
+set(spi_v2_default_output_dir "${CMAKE_CURRENT_SOURCE_DIR}/../../../out/spi_v2/production")
+
+# The full path to the final image.
+set(spi_v2_default_full_path_to_image ${spi_v2_default_output_dir}/${spi_v2_default_image_name})

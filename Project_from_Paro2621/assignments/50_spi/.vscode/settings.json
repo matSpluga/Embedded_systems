@@ -1,0 +1,4 @@
+{
+    "cmake.sourceDirectory": "/home/ric/Desktop/Embedded System/assignments/50_spi/cmake/spi/default",
+    "mplab.clangd.compileCommandsDir": "${workspaceFolder}/_build/spi/default"
+}
